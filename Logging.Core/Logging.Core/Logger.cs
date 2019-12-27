@@ -3,6 +3,7 @@ using Serilog.Events;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +49,13 @@ namespace Logging.Core
 
         public static void WriteError(LogDetail infoToLog)
         {
+            if (infoToLog.Exception != null)
+            {
+                var procName = FindProcName(infoToLog.Exception);
+                infoToLog.Location = string.IsNullOrEmpty(procName) ? infoToLog.Location : procName;
+                infoToLog.Message = GetMessageFromException(infoToLog.Exception);
+            }
+
             _errorLogger.Write(LogEventLevel.Information, "{@LogDetail}", infoToLog);
         }
 
@@ -57,6 +65,35 @@ namespace Logging.Core
             if (!writeDiagnostics)
                 return;
             _diagnosticLogger.Write(LogEventLevel.Information, "{@LogDetail}", infoToLog);
+        }
+
+        public static string GetMessageFromException(Exception ex)
+        {
+            if (ex.InnerException != null)
+                return GetMessageFromException(ex.InnerException); // recursive to get inner exception
+
+            return ex.Message;
+        }
+
+        private static string FindProcName(Exception ex)
+        {
+            var sqlException = ex as SqlException;
+            if (sqlException != null)
+            {
+                var procName = sqlException.Procedure;
+                if (!string.IsNullOrEmpty(procName))
+                    return procName;
+            }
+
+            if(!string.IsNullOrEmpty((string)ex.Data["Procedure"]))
+            {
+                return (string)ex.Data["Procedure"];
+            }
+
+            if (ex.InnerException != null)
+                return FindProcName(ex.InnerException);
+
+            return null;
         }
     }
 }
