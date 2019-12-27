@@ -72,6 +72,10 @@
       <Project>{e0089b91-6a54-4faa-a3d7-cf3ae19cc4cc}</Project>
       <Name>Logging.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Logging.Data\Logging.Data.csproj">
+      <Project>{d6e4d367-339e-4641-99d4-42a5c79b87ff}</Project>
+      <Name>Logging.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
