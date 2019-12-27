@@ -31,7 +31,7 @@ correct log / sink.
 
 ---
 ## MVC Logging
-* create utility method [helper.cs](Logging/Logging.Web/Helper.cs) to get all user / location / session data in log detail
+* create utility method [helper.cs](Logging/Logging.Web/Helpers.cs) to get all user / location / session data in log detail
 * apply performance globaly
 * apply global exception handling
 * add usage and diagnostics
