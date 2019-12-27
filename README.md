@@ -4,6 +4,9 @@ Example will show setting up a global logging, breaking out logging
 into different categories, and creating a framework for project to follow
 to ensure right information is logged for right event.
 
+## Required Setup / Environment
+* LocalDB
+
 ## What to log?
 Types of logging to worry about.
 * Usage

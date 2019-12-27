@@ -1,6 +1,9 @@
 ﻿using Logging.Core;
+using LoggingConsoleDemo;
+using LoggingConsoleDemo.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,19 +20,23 @@ namespace LoggingConsole
             var tracker = new PerfTracker("LoggerConsole_Executure", "", logDetail.UserName, 
                                     logDetail.Location, logDetail.Product, logDetail.Layer);
 
+            // Entity Framework
+            var customerDbContext = new CustomerDbContext();
             try
             {
-                var ex = new Exception("Something bad has happened!");
-                ex.Data.Add("input param", "nothing to see here");
-                throw ex;
+                var name = new SqlParameter("@Name", "waytoolongforitsowngood");
+                var totalPurchaes = new SqlParameter("@TotalPurchases", 12000);
+                var totalReturns = new SqlParameter("@TotalReturns", 100.50M);
+                customerDbContext.Database.ExecuteSqlCommand("Exec dbo.CreateNewCustomer @Name, @TotalPurchases, @TotalReturns",
+                        name, totalPurchaes, totalReturns);
+
             }
             catch (Exception ex)
             {
-                logDetail = GetLogDetail("", ex);
-                Logger.WriteError(logDetail);
+                var entityFrameworkDetail = GetLogDetail("", ex);
+                Logger.WriteError(entityFrameworkDetail);
             }
-
-            logDetail = GetLogDetail("used flogging console", null); //new flog detail
+            logDetail = GetLogDetail("used logging console", null);
             Logger.WriteUsage(logDetail);
 
             logDetail = GetLogDetail("stopping app", null);
