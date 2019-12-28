@@ -5,7 +5,10 @@ into different categories, and creating a framework for project to follow
 to ensure right information is logged for right event.
 
 ### Required Setup / Environment
-* LocalDB
+* LocalDB (some manual steps -> after initial create add stored proc)
+	* TODO add stored proc into migrations
+	* TODO add update to table column to create error into migrations
+* dot.net framework
 
 ### What to log?
 Types of logging to worry about.
@@ -28,10 +31,28 @@ correct log / sink.
 	* avoid exception logic noise in application if possible 
 * Try to make them add value (can add in additional derived info / stored proc info )
 
-
+## Projects
+| project | description | 
+| - | - |
+| Logging.Core | helper methods for basis of setting up global loging framework | 
+| Logging.Data | example of extending database task logging | 
+| Logging.web | hepler methods related to mvc or web app logging - getting users / etc | 
+| LoggingConsole | console app to demo loggin core priciples |
+| TodoMvc | sample mvc project to practice logging on | 
 ---
 ## MVC Logging
-* create utility method [helper.cs](Logging/Logging.Web/Helpers.cs) to get all user / location / session data in log detail
+* create utility method 
 * apply performance globaly
 * apply global exception handling
 * add usage and diagnostics
+
+## MVC utility Methods
+Similar to the logging.core project log methods are put in this project to help for web and mvc logging.
+[helpers.cs](Logging/Logging.Web/Helpers.cs) to get all user / location / session data in log detail
+
+## Apply performance Tracking
+Adding performance through [global filerters](Logging/TodoMvc/App_Start/FilterConfig.cs).
+
+## Apply global error handler/logging
+Add global error logger in the [Global.asax](Logging/TodoMvc/Global.asax).  
+* Errors will redirect to a custom page as well as have the error id.

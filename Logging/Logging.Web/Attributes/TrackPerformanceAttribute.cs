@@ -8,7 +8,6 @@ namespace Logging.Web.Attributes
         private string _productName;
         private string _layerName;
 
-        // can use like [TrackPerformance("ToDos", "Mvc")]
         public TrackPerformanceAttribute(string product, string layer)
         {
             _productName = product;
