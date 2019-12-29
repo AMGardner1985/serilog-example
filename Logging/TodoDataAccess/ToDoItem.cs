@@ -1,4 +1,5 @@
-﻿using Logging.Data.EntityFramework;
+﻿using Flogging.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure.Interception;
 
@@ -15,11 +16,11 @@ namespace TodoDataAccess
     {        
         public ToDoDbContext(string connectionString) : base(connectionString)
         {
-            DbInterception.Add(new LoggerEfInterceptor());
+            DbInterception.Add(new FloggerEFInterceptor());
         }
         public ToDoDbContext()
         {
-            DbInterception.Add(new LoggerEfInterceptor());
+            DbInterception.Add(new FloggerEFInterceptor());
         }
         public DbSet<ToDoItem> ToDoItems { get; set; }
     }

@@ -1,4 +1,5 @@
-﻿using Logging.Web;
+﻿using Flogging.Web;
+using Logging.Web;
 using System;
 using System.Collections.Generic;
 using System.Linq;

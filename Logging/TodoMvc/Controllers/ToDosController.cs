@@ -1,5 +1,6 @@
-﻿using Logging.Web;
-using Logging.Web.Attributes;
+﻿using Flogging.Web;
+using Flogging.Web.Attributes;
+using Logging.Web;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

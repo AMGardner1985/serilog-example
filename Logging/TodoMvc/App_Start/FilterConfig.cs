@@ -1,4 +1,4 @@
-﻿using Logging.Web.Attributes;
+﻿using Flogging.Web.Attributes;
 using System.Web;
 using System.Web.Mvc;
 

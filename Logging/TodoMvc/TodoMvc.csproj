@@ -52,6 +52,16 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Flogging.Core">
+      <HintPath>..\..\Flogging - Copy\Flogging.Core\bin\Debug\Flogging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Flogging.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Flogging - Copy\Flogging.Data\bin\Debug\Flogging.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Flogging.Web">
+      <HintPath>..\Flogging.Web\bin\Debug\Flogging.Web.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -63,20 +73,14 @@
       <HintPath>..\packages\Serilog.Sinks.File.3.2.0\lib\net45\Serilog.Sinks.File.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Data">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Data.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Data.DataSetExtensions">
-      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Data.DataSetExtensions.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -207,28 +211,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Logging.Core\Logging.Core.csproj">
-      <Project>{e0089b91-6a54-4faa-a3d7-cf3ae19cc4cc}</Project>
-      <Name>Logging.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logging.Data\Logging.Data.csproj">
-      <Project>{d6e4d367-339e-4641-99d4-42a5c79b87ff}</Project>
-      <Name>Logging.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Logging.Web\Logging.Web.csproj">
-      <Project>{1aab9c17-22ee-434e-9f06-61df816964e3}</Project>
-      <Name>Logging.Web</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TodoDataAccess\TodoDataAccess.csproj">
-      <Project>{3E0129D2-7825-4A4F-B6DB-E3D1CFFD5250}</Project>
+      <Project>{3e0129d2-7825-4a4f-b6db-e3d1cffd5250}</Project>
       <Name>TodoDataAccess</Name>
     </ProjectReference>
   </ItemGroup>
