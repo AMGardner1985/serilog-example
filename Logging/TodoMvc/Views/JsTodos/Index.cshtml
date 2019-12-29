@@ -58,7 +58,7 @@
 </div>
 
 <script type="text/javascript">
-    const baseUrl = "http://localhost:33686";
+    const todoApiBaseUrl = "http://localhost:33686";
     function buttonClick() {        
         alert('clicked!');  
 
@@ -73,7 +73,7 @@
         $("#content").empty();
         $.ajax({
             method: "GET",
-            url: baseUrl + "/api/Todos"                        
+            url: todoApiBaseUrl + "/api/Todos"                        
         }).done(function (data) {
             $.each(data, function (ind, val) {
                 $("#content").append("<li style=\"font-size: 20px;\">" + val.Item + "</li>");
@@ -87,7 +87,7 @@
         $("#content2").empty();
         $.ajax({
             method: "GET",
-            url: baseUrl + "/api/Todos/2",
+            url: todoApiBaseUrl + "/api/Todos/2",
         }).done(function (data) {
             $("#content2").append("<li style=\"font-size: 20px;\">" + data.Item +
                 " (" + data.Completed + ")</li>");  
@@ -104,7 +104,7 @@
 
         $.ajax({
             method: "PUT",
-            url: baseUrl + "/api/Todos/2",
+            url: todoApiBaseUrl + "/api/Todos/2",
             contentType: "application/json",
             data: JSON.stringify(todo)
         }).done(function (data) {

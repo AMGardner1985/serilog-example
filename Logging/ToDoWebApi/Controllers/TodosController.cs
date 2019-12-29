@@ -5,6 +5,7 @@ using ToDoWebApi.Models;
 
 namespace ToDoWebApi.Controllers
 {
+    [AllowAnonymous]
     public class TodosController : ApiController
     {
         private ToDoDbContext _db;

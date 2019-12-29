@@ -5,6 +5,7 @@ namespace ToDoWebApi.Controllers
 {
     public class SecureController : ApiController
     {
+        [AllowAnonymous]
         public string Get(string goodOrBad)
         {
             if (goodOrBad.ToLower() != "good")
