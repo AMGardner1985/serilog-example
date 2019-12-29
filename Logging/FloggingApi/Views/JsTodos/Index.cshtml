@@ -1,0 +1,118 @@
+﻿
+@{
+    ViewBag.Title = "JavaScript Todos";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <button class="btn btn-info" onclick="buttonClick();">Simple Click</button>
+    </div>
+    <div class="col-md-3">
+        <button class="btn btn-success" onclick="getAllTodos();">Get All Todos</button>
+    </div>
+    <div class="col-md-3">
+        <button class="btn btn-primary" onclick="getNum2();">Get ToDo 2</button>
+    </div>
+    <div class="col-md-3">
+        <button class="btn btn-warning" onclick="updateNum2();">Update ToDo 2</button>
+    </div>
+</div>
+
+<div class="row" style="padding-top:30px;">
+    <div class="col-md-4">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">All Todos</h3>
+            </div>
+            <div class="panel-body">
+                <ul id="content"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Todo Number 2</h3>
+            </div>
+            <div class="panel-body">
+                <ul id="content2"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">Update Results</h3>
+            </div>
+            <div class="panel-body">
+                <input id="UpdatedText" type="text" />
+                <div id="content3"></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    function buttonClick() {        
+        alert('clicked!');  
+
+        var addtlInfo = {
+            customValue: "Something extra"
+        };
+        logUsage("clicked button", addtlInfo);
+    }    
+
+    function getAllTodos() {
+        perfLoggerStart("getting all todos");
+        $("#content").empty();
+        $.ajax({
+            method: "GET",
+            url: "https://sampleapi.knowyourtoolset.com/api/Todos"                        
+        }).done(function (data) {
+            $.each(data, function (ind, val) {
+                $("#content").append("<li style=\"font-size: 20px;\">" + val.Item + "</li>");
+            });            
+            perfLoggerStop("getting all todos");
+        });
+    }    
+
+    function getNum2() {
+        logDiagnostic("starting get", { todo_id: 2 });
+        $("#content2").empty();
+        $.ajax({
+            method: "GET",
+            url: "https://sampleapi.knowyourtoolset.com/api/Todos/2",
+        }).done(function (data) {
+            $("#content2").append("<li style=\"font-size: 20px;\">" + data.Item +
+                " (" + data.Completed + ")</li>");  
+            logDiagnostic("api call completed", { todo_id: 2 });
+        });
+    }    
+
+    function updateNum2() {
+        $("#content3").empty();
+        var todo = {
+            Item: $("#UpdatedText").val(),
+            Completed: false
+        }
+
+        $.ajax({
+            method: "PUT",
+            url: "https://sampleapi.knowyourtoolset.com/api/Todos/2",
+            contentType: "application/json",
+            data: JSON.stringify(todo)
+        }).done(function (data) {
+            $("#content3").append("<div class=\"alert alert-success\">Successful update!</div>");
+        }).fail(function (response) {
+            logError("failed updating todo", response.responseText, todo);
+            $("#content3").append("<div class=\"alert alert-danger\">"
+                + response.responseText + "</div>");
+        });
+    }
+
+</script>

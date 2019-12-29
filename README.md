@@ -69,3 +69,13 @@ Add global error logger in the [Global.asax](Logging/TodoMvc/Global.asax).
 * See the added handler in config.filter in [WebApiConfig.cs](Logging\ToDoWebApi\App_Start\WebApiConfig.cs)
 
 ---
+## Logging JavaScript or TypeScript component of app
+Not on server anymore, since running on client.  Will have to do logging via api calls.
+* Logging via api
+* Which timestamp?
+* Secuirty?
+* Other Apps can use this technique (xamarin / non-.net)
+
+### Types of entries
+(Usage / Performance / Error / Diagnostic).  However ou may already be getting some of this logging 
+on the server side, so the javascript could be more ad-hoc. 
