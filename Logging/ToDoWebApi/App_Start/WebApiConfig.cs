@@ -15,9 +15,9 @@ namespace ToDoWebApi
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
             config.Filters.Add(new AuthorizeAttribute());
 
-            config.Filters.Add(new ApiLoggerAttribute("ToDos"));
+            config.Filters.Add(new ApiLoggerAttribute("ToDos")); //how to add global performance logging 
 
-            config.Services.Replace(typeof(IExceptionHandler), new CustomApiExceptionHandler());
+            config.Services.Replace(typeof(IExceptionHandler), new CustomApiExceptionHandler()); //exception logging
             config.Services.Add(typeof(IExceptionLogger), new CustomApiExceptionLogger("ToDos"));
 
             // Web API routes

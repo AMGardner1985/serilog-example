@@ -46,13 +46,26 @@ correct log / sink.
 * apply global exception handling
 * add usage and diagnostics
 
-## MVC utility Methods
+### MVC utility Methods
 Similar to the logging.core project log methods are put in this project to help for web and mvc logging.
 [helpers.cs](Logging/Logging.Web/Helpers.cs) to get all user / location / session data in log detail
 
-## Apply performance Tracking
+### Apply performance Tracking
 Adding performance through [global filerters](Logging/TodoMvc/App_Start/FilterConfig.cs).
 
-## Apply global error handler/logging
+### Apply global error handler/logging
 Add global error logger in the [Global.asax](Logging/TodoMvc/Global.asax).  
 * Errors will redirect to a custom page as well as have the error id.
+
+---
+## Api logging
+* See the attribute for apilogging in the [apiLoggerAttribute file](Logging\Flogging.Web\Attributes\ApiLoggerAttribute.cs)
+
+### Add global performance tracking
+* See the added config.filter in [WebApiConfig.cs](Logging\ToDoWebApi\App_Start\WebApiConfig.cs)
+
+### Adding exception logging
+* See custome handler and logger in [logging.web/service](Logging\Flogging.Web\Services\)
+* See the added handler in config.filter in [WebApiConfig.cs](Logging\ToDoWebApi\App_Start\WebApiConfig.cs)
+
+---

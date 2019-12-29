@@ -28,8 +28,30 @@ namespace Flogging.Web.Attributes
             Helpers.GetUserData(dict, user, out userId, out userName);
 
             string location;
-            Helpers.GetLocationForApiCall(actionContext.RequestContext, dict, out location);                                                                       
-            
+            Helpers.GetLocationForApiCall(actionContext.RequestContext, dict, out location);
+
+            var qs = actionContext.Request.GetQueryNameValuePairs()
+                        .ToDictionary(kv => kv.Key, kv => (object)kv.Value,
+                            StringComparer.OrdinalIgnoreCase);
+
+            var i = 0;
+            foreach (var q in qs) 
+            {
+                    var newKey = string.Format("q-{0}-{1}", i++, q.Key);
+                    if (!dict.ContainsKey(newKey))
+                        dict.Add(newKey, q.Value);
+            }
+
+            var referrer = actionContext.Request.Headers.Referrer;
+            if (referrer != null)
+            {
+                var source = actionContext.Request.Headers.Referrer.OriginalString;
+                if (source.ToLower().Contains("swagger"))
+                    source = "Swagger";
+                if (!dict.ContainsKey("Referrer"))
+                    dict.Add("Referrer", source);
+            }
+
             actionContext.Request.Properties["PerfTracker"] = new PerfTracker(location, 
                 userId, userName, location, _productName, "API", dict);
         }        

@@ -14,6 +14,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoDataAccess", "TodoDataAccess\TodoDataAccess.csproj", "{3E0129D2-7825-4A4F-B6DB-E3D1CFFD5250}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{96B97F35-83A5-494F-B6D3-D86AFBB28A4C}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoMvc", "TodoMvc\TodoMvc.csproj", "{889B25CC-7D9F-4690-B6CA-0C89F35350E4}"
 EndProject

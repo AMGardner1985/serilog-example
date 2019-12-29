@@ -16,19 +16,19 @@ namespace Flogging.Core
         static Flogger()
         {
             _perfLogger = new LoggerConfiguration()
-                .WriteTo.File(path: "C:\\users\\edahl\\Source\\perf.txt")
+                .WriteTo.File(path: "C:\\temp\\perf.txt")
                 .CreateLogger();
 
             _usageLogger = new LoggerConfiguration()
-                .WriteTo.File(path: "C:\\users\\edahl\\Source\\usage.txt")
+                .WriteTo.File(path: "C:\\temp\\usage.txt")
                 .CreateLogger();
 
             _errorLogger = new LoggerConfiguration()
-                .WriteTo.File(path: "C:\\users\\edahl\\Source\\error.txt")
+                .WriteTo.File(path: "C:\\temp\\error.txt")
                 .CreateLogger();
 
             _diagnosticLogger = new LoggerConfiguration()
-                .WriteTo.File(path: "C:\\users\\edahl\\Source\\diagnostic.txt")
+                .WriteTo.File(path: "C:\\temp\\diagnostic.txt")
                 .CreateLogger();
         }
 
